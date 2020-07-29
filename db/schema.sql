@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS dungeonmasterDB;
-CREATE DATABASE dungeonmasterDB;
+DROP DATABASE IF EXISTS dungeonmasterdb;
+CREATE DATABASE dungeonmasterdb;

@@ -5,7 +5,7 @@ $(document).ready(() => {
     const raceInput = $("input#race-input");
     const subClassInput = $("input#subclass-input");
     const subRaceInput = $("input#subrace-input");
-    const briefBioInput = $("input#bio-input");
+    const briefBioInput = $("textarea#bio-input");
 
     createForm.on("submit", (event) => {
         event.preventDefault();
@@ -18,7 +18,7 @@ $(document).ready(() => {
             briefBio: briefBioInput.val().trim()
         };
 
-        if(!newCharacter.name || !newCharacter.class || !newCharacter.race) {
+        if (!newCharacter.name || !newCharacter.class || !newCharacter.race) {
             return;
         }
 
@@ -32,7 +32,7 @@ $(document).ready(() => {
         briefBioInput.val("");
     });
 
-    function createCharacter(characterName, characterClass, characterRace, 
+    function createCharacter(characterName, characterClass, characterRace,
         chracterSubclass, characterSubrace, characterBriefbio) {
         $.post("/api/characters", {
             name: characterName,
@@ -42,13 +42,13 @@ $(document).ready(() => {
             subRace: characterSubrace,
             briefBio: characterBriefbio
         })
-        .then(() => {
-            window.location.replace("/characterview");
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-    }
+            .then(() => {
+                window.location.replace("/characterview");
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 });
 
 
