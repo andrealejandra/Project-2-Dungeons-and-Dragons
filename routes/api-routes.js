@@ -16,7 +16,8 @@ module.exports = function (app) {
   app.post("/api/signup", function (req, res) {
     db.User.create({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      nickName: req.body.nickname
     })
       .then(function () {
         res.redirect(307, "/api/login");
@@ -98,11 +99,28 @@ module.exports = function (app) {
 
 };
 /*
-  
-  get all the campaigns from a user
+GET REQUESTS
+  get all characters for a user
+  '/api/characters/'
+  get all campaigns for a user
+  '/api/campaigns/'
+  get a single character
+  '/api/characters/:id'
+  get a single campaign
+  '/api/campaigns/:id'
+
+
+DELETE 
   delete a character
+  '/api/campaigns/:id'
+
+
   create a character
+
+  PUT/PATCH
   update a character
+  '/api/campaigns/:id'
+
   create a campaign
   delete a campaign
   update a campaign
