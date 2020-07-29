@@ -41,6 +41,7 @@ module.exports = function (sequelize, DataTypes) {
       null
     );
   });
+  
   User.associate = models => {
     User.hasMany(models.Campaign, {
       onDelete: "cascade"

@@ -3,7 +3,7 @@
       "browser": true,
       "commonjs": true,
       "node": true,
-      "eslint-env": "es6"
+      "es6": true
     },
     "extends": "prettier",
     "plugins": ["prettier"],
@@ -24,7 +24,8 @@
       "indent": ["error", 2],
       "quotes": ["error", "double"],
       "semi": ["error", "always"],
-      "prettier/prettier": "error"
+      "prettier/prettier": "error",
+      "multiline-comment-style": ["error", "starred-block"]
     }
   }
   
