@@ -1,6 +1,3 @@
-const { sequelize } = require(".");
-const { DataTypes } = require("sequelize/types");
-
 module.exports = function (sequelize, DataTypes) {
     const Campaign = sequelize.define("Campaign", {
         name: {
@@ -14,13 +11,17 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Campaign.associate = function(models) {
-        Campaign.hasMany(models.Character, {
-            onDelete: "casecade"
-        });
         Campaign.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
             }
         });
+        Campaign.hasMany(models.Character, {
+            onDelete: "cascade"
+        });
+
+      
     };
+
+    return Campaign;
 };

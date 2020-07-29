@@ -38,6 +38,11 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             }
         });
+        Character.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
     };
 
     return Character;
