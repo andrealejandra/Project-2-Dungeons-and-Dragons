@@ -11,27 +11,52 @@
 
 <body>
   <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/logout">
+          Logout
+        </a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h2>Welcome <span class="member-name"></span></h2>
       </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <button type="view-chara" class="btn btn-default">View Characters
+        </button> <span>
+          <button type="view-camp" class="btn btn-default">View Campaign</button></span>
+      </div>
+    </div>
+
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <button type="create-chara" class="btn btn-default">Create Character</button> <span>
+            <button type="create-camp" class="btn btn-default">Create Campaign</button></span>
+        </div>
+      </div>
+
+    
+
+    <!-- create campaign -- create campaign html - js pg 
+  create character -- create character html- js pg w/api to dnd to get the character types
+
+  view all characters -- character view html (mulitple.js to display) api database calls (find all)
+  view all campaigns -- campaign view html (mulitple.js to display) api database calls (find all)
+
+  update characters -- got to update html page find by id from db
+  update campaign -->
 
 
-  <!-- buttons and stuff go here... -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/members.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/members.js"></script>
+
 
 </body>
 
