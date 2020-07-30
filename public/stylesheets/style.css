@@ -1,4 +1,12 @@
+body {
+  background-image: url("image3.png");
+  /* background-color: #cccccc; */
+ }
+
+ 
 form.signup,
 form.login {
   margin-top: 50px;
 }
+
+
