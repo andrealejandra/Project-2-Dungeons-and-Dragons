@@ -18,7 +18,8 @@ $(document).ready(function () {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.email, userData.nickname, userData.password);
+    signUpUser(userData);
+
     emailInput.val("");
     nicknameInput.val("");
     passwordInput.val("");
@@ -26,18 +27,23 @@ $(document).ready(function () {
 
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
-  function signUpUser(email, nickname, password) {
+  function signUpUser(userData) {
+    //maybe I can just send the object
+    const{email, nickname, password} = userData;
     $.post("/api/signup", {
       email: email,
       password: password,
       nickname: nickname
     })
-      .then(function () {
-        window.location.replace("/members");
-        // If there's an error, handle it by throwing up a bootstrap alert
-      })
-      .catch(handleLoginErr);
-  }
+      .then(() => {
+        $.post("/api/campaigns", {
+          name: "Character Sandbox",
+          campaignSummary: "This is a sandbox for you to store characters who are not in a campaign."
+        }).then(() => {
+          window.location.replace("/members");
+        });
+      }).catch(handleLoginErr);
+  };
 
   function handleLoginErr(err) {
     $("#alert .msg").text(err.responseJSON);
