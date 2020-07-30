@@ -1,18 +1,14 @@
 $(document).ready(() => {
-    const createForm = $("form.createCharacter");
-    const nameInput = $("input#name-input");
-    const classSelection = $("selection#class-input");
-    const raceSelection = $("selection#race-input");
-    const subClassSelection = $("selection#subclass-input");
-    const subRaceSelection = $("selection#subrace-input");
-    const campaignSelection = $("selection#campaign-input");
-    const briefBioInput = $("input#bio-input");
+    const createForm = $("form.newcharacter");
+    const nameInput = $("input#character-name");
+    const classSelection = $("select#class-input");
+    const raceSelection = $("select#race-input");
+    const subClassSelection = $("select#subclass-input");
+    const subRaceSelection = $("select#subrace-input");
+    const campaignSelection = $("select#campaign-input");
+    const briefBioInput = $("textarea#bio-input");
 
-    getClasses();
-    getRaces();
-    getSubClasses();
-    getSubRaces();
-    getCampaigns();
+
 
     // make api calls
     // get all the classes from the Dungeons and Dragons api
@@ -83,29 +79,37 @@ $(document).ready(() => {
             throw err;
         })
     };
-    
     //somewhat confident this won't suck
     const getCampaigns = () => {
         $.get("/api/campaigns").then(dbCampaigns => {
-            //I don't know what form the dbCampaigns will be in -- assuming it's just an array of campaigns
             let campaignNames = dbCampaigns.map(campaign => campaign.name);
 
             for (let i = 0; i < campaignNames.length; i++) {
-                $("#subrace-input").append($(`
-            <option value = ${campaignNames[i]}> ${campaignNames[i]} </option>
+                let campaignName = campaignNames[i].split(" ").join("");
+                $("#campaign-input").append($(`
+            <option value = ${campaignName}> ${campaignNames[i]} </option>
             `));
             };
         });
     }
 
+    getClasses();
+    getRaces();
+    getSubClasses();
+    getSubRaces();
+    getCampaigns();
+
+
     createForm.on("submit", (event) => {
         event.preventDefault();
+
         const newCharacter = {
             name: nameInput.val().trim(),
             class: classSelection.val().trim(),
             race: raceSelection.val().trim(),
             subClass: subClassSelection.val().trim(),
             subRace: subRaceSelection.val().trim(),
+            campaign: campaignSelection.val().trim(),
             briefBio: briefBioInput.val().trim()
         };
 
@@ -114,16 +118,30 @@ $(document).ready(() => {
             return;
         }
 
+        let campaignId = getCampaignId(newCharacter.campaign.split(/(?=[A-Z])/).join(" "));
+        console.log(campaignId);
+
+        function getCampaignId(campaignName) {
+            $.get(`/api/campaigns/name/${campaignName}`)
+                .then(dbCampaign => {
+                    console.log(typeof dbCampaign);
+
+                    createCharacter(newCharacter.name, newCharacter.class, 
+                        newCharacter.race, newCharacter.subClass, newCharacter.subRace, 
+                        dbCampaign, newCharacter.briefBio);
+                });
+        }
 
         //there's no point in me making this object 
-        createCharacter(newCharacter.name, newCharacter.class, newCharacter.race,
-            newCharacter.subClass, newCharacter.subRace, newCharacter.briefBio);
+        // createCharacter(newCharacter.name, newCharacter.class, newCharacter.race,
+        //     newCharacter.subClass, newCharacter.subRace, campaignId, newCharacter.briefBio);
 
         nameInput.val("");
         classSelection.val("");
         raceSelection.val("");
         subClassSelection.val("");
         subRaceSelection.val("");
+        campaignSelection.val("");
         briefBioInput.val("");
     });
 
@@ -131,14 +149,15 @@ $(document).ready(() => {
     // There are still questions about routing to this ... whether or not there will be a campaign
 
     function createCharacter(characterName, characterClass, characterRace,
-        chracterSubclass, characterSubrace, characterBriefbio) {
+        chracterSubclass, characterSubrace, characterCampaign, characterBriefbio) {
         $.post("/api/characters", {
             name: characterName,
             class: characterClass,
             race: characterRace,
             subClass: chracterSubclass,
             subRace: characterSubrace,
-            briefBio: characterBriefbio
+            briefBio: characterBriefbio,
+            campaign: characterCampaign
         })
             .then(() => {
                 //this needs to be routed in the html-routes
@@ -148,6 +167,7 @@ $(document).ready(() => {
                 console.log(err);
             });
     };
+
 
 
 
