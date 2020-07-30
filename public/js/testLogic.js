@@ -1,54 +1,121 @@
 $(document).ready(() => {
-    // const classesURL = "https://www.dnd5eapi.co/api/classes";
-    // const racesURL = "https://www.dnd5eapi.co/api/races";
-    // const subClassesURL = "https://www.dnd5eapi.co/api/subclasses";
-    // const subRacesURL = "https://www.dnd5eapi.co/api/subraces";
+    const racesURL = "https://www.dnd5eapi.co/api/races";
+    const subClassesURL = "https://www.dnd5eapi.co/api/subclasses";
+    const subRacesURL = "https://www.dnd5eapi.co/api/subraces";
 
     const classForm = $("form#classTest");
+    const raceForm = $("form#racetest");
+    const subRaceForm = $("form#subRacetest");
+    const subClassForm = $("form#subClasstest");
+
+
     const classInput= $("select#class-input");
+    const raceInput = $("select#race-input");
+    const subRaceInput = $("select#subRace-input");
+    const subClassInput = $("select#subClass-input");
+
 
     classForm.on("submit", event =>{
         event.preventDefault();
         console.log(classInput.val());
+    });
+
+    raceForm.on("submit", event =>{
+        event.preventDefault();
+        console.log(raceInput.val());
+    });
+
+    subRaceForm.on("submit", event =>{
+        event.preventDefault();
+        console.log(subRaceInput.val());
+    });
+
+    subClassForm.on("submit", event=>{
+        event.preventDefault();
+        console.log(subClassInput.val());
     })
 
-    const select = [];
+    // const select = [];
 
-    var queryURL = "https://www.dnd5eapi.co/api/classes";
+    var classesURL = "https://www.dnd5eapi.co/api/classes";
 
     //Call API
-    function callAPI() {
+    function callClassesAPI() {
         $.ajax({
-            url: queryURL,
+            url: classesURL,
             method: "GET"
         }).then(function (response) {
             var results = response.results.map(characterObject => characterObject.name);
             console.log(results);
 
-
             for(let i= 0; i < results.length; i++){
                 $("#class-input").append($(`<option value = ${results[i]}> ${results[i]} </option>`));
             }
-
-
-
-
-
-
-
-
-        });
-
-
-
-
-
-
-
-
-
+        })
     }
-    callAPI();
+    callClassesAPI();
+    // });
+
+
+function callRacesAPI() {
+    $.ajax({
+        url: racesURL,
+        method: "GET"
+    }).then(function (response) {
+        var results = response.results.map(characterObject => characterObject.name);
+        console.log(results);
+
+        for(let i= 0; i < results.length; i++){
+            $("#race-input").append($(`<option value = ${results[i]}> ${results[i]} </option>`));
+        }
+    })
+    }
+    callRacesAPI();
+
+
+
+
+    function callSubRacesAPI() {
+        $.ajax({
+            url: subRacesURL,
+            method: "GET"
+        }).then(function (response) {
+            var results = response.results.map(characterObject => characterObject.name);
+            console.log(results);
+    
+            for(let i= 0; i < results.length; i++){
+                $("#subRace-input").append($(`<option value = ${results[i]}> ${results[i]} </option>`));
+            }
+        })
+        }
+        callSubRacesAPI();
+
+
+
+
+     function callSubClassesAPI() {
+          $.ajax({
+               url: subClassesURL,
+              method: "GET"
+         }).then(function (response) {
+               var results = response.results.map(characterObject => characterObject.name);
+               console.log(results);
+        
+             for(let i= 0; i < results.length; i++){
+                 $("#subClass-input").append($(`<option value = ${results[i]}> ${results[i]} </option>`));
+             }
+         })
+         }
+         callSubClassesAPI();
+
+
+
+
+
+
+
+
+
 
 });
 
