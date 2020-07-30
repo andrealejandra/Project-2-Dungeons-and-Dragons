@@ -37,12 +37,13 @@ module.exports = function (app) {
   app.get("/api/user_data", function (req, res) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
-      res.json({});
+      res.status(401).json({});
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
+        nickName: req.user.nickName,
         id: req.user.id
       });
     };
@@ -82,35 +83,123 @@ module.exports = function (app) {
     });
   });
 
-  // get all the characters for a specific campaign
-  // app.get("/api/characters/:campaignId", (req, res) => {
-  //   let userId = "";
-  //   if(req.user) {
-  //     userId = req.user.id;
-  //   }
-  //   //find all where the userId = id and campaignId = campaignId
-  //   db.Character.findAll({
-  //     where: {
-  //       id:
-  //     }
-  //   })
-  // })
+  // get a single character
+  app.get('/api/characters/:characterId', (req, res) => {
+    let userId = "";
+    if (req.user) {
+      userId = req.user.id;
+    }
+    //find a character with a userId and a characterId
+    db.Character.findOne({
+      where: {
+        UserId: userId,
+        id: req.params.characterId
+      }
+    }).then(dbCharacter => {
+      res.json(dbCharacter);
+    }).catch(err => {
+      res.status(500).end();
+    })
+  });
+
+  //find a campaign with a userId and a campainId
+  app.get('/api/campaigns/:campaignId', (req, res) => {
+    let userId = "";
+    if (req.user) {
+      userId = req.user.id;
+    }
+    db.Campaign.findOne({
+      where: {
+        UserId: userId,
+        id: req.params.campaignId
+      }
+    }).then(dbCampain => {
+      res.json(dbCampain)
+    }).catch(err => {
+      res.status(500).end();
+    })
+  });
+
+  //get all the characters for a specific campaign
+  app.get("/api/characters/:campaignId", (req, res) => {
+    let userId = "";
+    if (req.user) {
+      userId = req.user.id;
+    }
+
+    db.Character.findAll({
+      where: {
+        UserId: userId,
+        CampaignId: req.params.campaignId
+      }
+    }).then(dbCharacters => {
+      res.json(dbCharacters)
+    }).catch(err => {
+      res.status(500).end();
+    })
+  })
+
+
+  /* ********* I added work here
+    - how to pass the userId through the post request?
+    - do I need to include *include* in here?
+    - can a user create a character outside a campaign?
+    - would I also pass in the campaign id?
+  */
+  app.post('/api/characters/', (req, res) => {
+    let userId = "";
+    if (req.user) {
+      userId = req.user.id;
+    }
+    
+    db.Character.create({
+      name: req.body.name,
+      class: req.body.class,
+      race: req.body.race,
+      subClass: req.body.subClass,
+      subRace: req.body.subRace,
+      briefBio: req.body.breifBio,
+      UserId: userId,
+
+    }).then(dbCharacter => {
+      res.json(dbCharacter)
+    }).catch(err => {
+      res.status(500).end();
+    });
+  });
+
+  app.post('/api/campaigns', (req, res) => {
+    let userId = "";
+    if(req.user) {
+      userId = req.user.id;
+    }
+    db.Campaign.create({
+      name: req.body.name,
+      campaignSummary: req.body.campaignSummary,
+      UserId: userId
+    }).then(dbCampaign => {
+      res.json(dbCampaign);
+    }).catch(err => {
+      res.status(500).end();
+    });
+  });
+
+
 
 
 };
+
 /*
 GET REQUESTS
-  get all characters for a user
-  '/api/characters/'
-  get all campaigns for a user
-  '/api/campaigns/'
-  get a single character
-  '/api/characters/:id'
-  get a single campaign
-  '/api/campaigns/:id'
+  get all characters for a user [x]
+  get all campaigns for a user [x]
+
+  get a single character [x]
+  get a single campaign [x]
 
 
-DELETE 
+
+DELETE
   delete a character
   '/api/campaigns/:id'
 
