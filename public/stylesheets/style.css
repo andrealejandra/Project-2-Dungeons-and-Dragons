@@ -1,12 +1,17 @@
 body {
   background-image: url("image3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
   /* background-color: #cccccc; */
- }
+ };
 
  
 form.signup,
 form.login {
   margin-top: 50px;
+};
+
+.container{
+  padding: 1em
 }
-
-

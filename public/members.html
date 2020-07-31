@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+  <link href="../node_modules/multiple.js/multiple.css" rel="stylesheet">
   <link rel="stylesheet" href="./stylesheets/style.css">
 
 </head>
@@ -20,42 +21,65 @@
       </div>
     </div>
   </nav>
+
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="member-name"></span></h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <a href="multicharacterview.html">
-        <button type="view-chara" class="btn btn-default">View Characters
-        </button> 
-        </a>
-        <span>
-          <a href="multicampaign.html">
-          <button type="view-camp" class="btn btn-default">View Campaigns</button>
-          </a>
-          </span>
-      </div>
-    </div>
-
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <a href="createcharacter.html">
-          <button type="create-chara" class="btn btn-default">Create Character</button>
-        </a> 
-          <span>
-            <a href="createcampaign.html">
-            <button type="create-camp" class="btn btn-default">Create Campaign</button>
-            </a>
-          </span>
+      <div class="col-md-6 col-md-offset-3 multiple-desktop title">
+        <div class="multiple-desktop-text">
+          <h2>Welcome <span class="member-name"></span></h2>
         </div>
       </div>
+    </div>
+    <div class="container">
+      <div class="tiles ">
+        <div class="col-md-6 col-md-offset-1">
 
-    
+          <div type="view-chara" class="tile multiple-desktop ">
+            <div class="multiple-desktop-text">
+              <a href="multicharacterview.html">
+                View Characters
+              </a>
+            </div>
+          </div>
 
-    <!-- create campaign -- create campaign html - js pg 
+          <div type="view-camp" class="tile multiple-desktop ">
+            <div class="multiple-desktop-text">
+              <a href="multicampaignview.html">
+                View Campaigns
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-md-offset-1">
+          <div type="create-chara" class="tile multiple-desktop ">
+            <div class="multiple-desktop-text">
+              <a href="createcharacter.html">
+                Create Character
+              </a>
+            </div>
+          </div>
+          <span>
+
+            <div type="create-camp" class="tile multiple-desktop ">
+              <div class="multiple-desktop-text">
+                <a href="createcampaign.html">
+                  Create Campaign
+                </a>
+              </div>
+            </div>
+          </span>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- create campaign -- create campaign html - js pg 
   create character -- create character html- js pg w/api to dnd to get the character types
 
   view all characters -- character view html (mulitple.js to display) api database calls (find all)
@@ -67,8 +91,8 @@
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/members.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/members.js"></script>
 
 
 </body>
