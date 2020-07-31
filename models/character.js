@@ -30,15 +30,8 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    // Characters belong to campaigns
-
     Character.associate = function(models) {
         Character.belongsTo(models.Campaign, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-        Character.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
             }

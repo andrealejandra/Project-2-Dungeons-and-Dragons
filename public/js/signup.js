@@ -14,6 +14,8 @@ $(document).ready(function () {
       password: passwordInput.val().trim()
     };
 
+
+    //I need to handle this more gracefully
     if (!userData.email || !userData.nickname || !userData.password) {
       return;
     }

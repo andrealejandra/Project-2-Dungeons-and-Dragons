@@ -20,6 +20,7 @@ module.exports = function (app) {
       nickName: req.body.nickname
     })
       .then(function () {
+        //this makes another ajax call
         res.redirect(307, "/api/login");
       })
       .catch(function (err) {
@@ -51,16 +52,21 @@ module.exports = function (app) {
 
   // get all characters for a user
   app.get('/api/characters/', (req, res) => {
+    console.log("did we even get here?");
     let userId = "";
     if (req.user) {
       userId = req.user.id;
     }
+    console.log(userId);
     db.Character.findAll({
       where: {
         id: userId
       }
     }).then(dbCharacters => {
       res.json(dbCharacters);
+
+      //res.redirect(307, "/api/login");
+
     }).catch(err => {
       res.status(500).end();
     });
@@ -163,13 +169,7 @@ module.exports = function (app) {
     - can a user create a character outside a campaign?
     - would I also pass in the campaign id?
   */
-  app.post('/api/characters/', (req, res) => {
-    let userId = "";
-    if (req.user) {
-      userId = req.user.id;
-    }
-    
-    console.log(req.body);
+  app.post('/api/characters', (req, res) => {
 
     db.Character.create({
       name: req.body.name,
@@ -177,12 +177,13 @@ module.exports = function (app) {
       race: req.body.race,
       subClass: req.body.subClass,
       subRace: req.body.subRace,
-      briefBio: req.body.breifBio,
-      CampaignId: req.body.campaign,
-      UserId: userId
+      briefBio: req.body.briefBio,
+      CampaignId: parseInt(req.body.campaign)
+  
     }).then(dbCharacter => {
-      res.json(dbCharacter)
+      res.json(dbCharacter.dataValues.id);
     }).catch(err => {
+      console.log(err);
       res.status(500).end();
     });
   });
@@ -192,18 +193,13 @@ module.exports = function (app) {
     if(req.user) {
       userId = req.user.id;
     }
-
-    console.log(req.body);
-
     db.Campaign.create({
       name: req.body.name,
       campaignSummary: req.body.campaignSummary,
       UserId: userId
     }).then(dbCampaign => {
-      
       res.json(dbCampaign);
     }).catch(err => {
-      console.log("No way").
       res.status(500).end();
     });
   });
