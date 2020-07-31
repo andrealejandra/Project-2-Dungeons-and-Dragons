@@ -74,7 +74,7 @@ module.exports = function (app) {
     }
     db.Campaign.findAll({
       where: {
-        id: userId
+        UserId: userId
       }
     }).then(dbCampaigns => {
       res.json(dbCampaigns);
@@ -102,8 +102,8 @@ module.exports = function (app) {
     })
   });
 
-  //find a campaign with a userId and a campainId
-  app.get('/api/campaigns/:campaignId', (req, res) => {
+  //find a campaign with a userId and a campaignName
+  app.get('/api/campaigns/:campaignName', (req, res) => {
     let userId = "";
     if (req.user) {
       userId = req.user.id;
@@ -111,16 +111,31 @@ module.exports = function (app) {
     db.Campaign.findOne({
       where: {
         UserId: userId,
-        id: req.params.campaignId
+        name: req.params.campaignName
       }
-    }).then(dbCampain => {
-      res.json(dbCampain)
+    }).then(dbCampaign => {
+      res.json(dbCampaign)
     }).catch(err => {
       res.status(500).end();
     })
   });
 
-  //get all the characters for a specific campaign
+  //find a campaign id with a userId and a campaignName
+  app.get('/api/campaigns/name/:campaignName', (req, res) => {
+    let userId = req.user ? req.user.id : "";
+    db.Campaign.findOne({
+      where: {
+        UserId: userId,
+        name: req.params.campaignName
+      }
+    }).then(dbCampaign => {
+      res.json(dbCampaign.id)
+    }).catch(err => {
+      res.status(500).end();
+    })
+  })
+
+  //get all the characters for a specific campaign when given an id
   app.get("/api/characters/:campaignId", (req, res) => {
     let userId = "";
     if (req.user) {
@@ -139,6 +154,8 @@ module.exports = function (app) {
     })
   })
 
+  
+
 
   /* ********* I added work here
     - how to pass the userId through the post request?
@@ -152,6 +169,8 @@ module.exports = function (app) {
       userId = req.user.id;
     }
     
+    console.log(req.body);
+
     db.Character.create({
       name: req.body.name,
       class: req.body.class,
@@ -159,8 +178,8 @@ module.exports = function (app) {
       subClass: req.body.subClass,
       subRace: req.body.subRace,
       briefBio: req.body.breifBio,
-      UserId: userId,
-
+      CampaignId: req.body.campaign,
+      UserId: userId
     }).then(dbCharacter => {
       res.json(dbCharacter)
     }).catch(err => {
@@ -173,13 +192,18 @@ module.exports = function (app) {
     if(req.user) {
       userId = req.user.id;
     }
+
+    console.log(req.body);
+
     db.Campaign.create({
       name: req.body.name,
       campaignSummary: req.body.campaignSummary,
       UserId: userId
     }).then(dbCampaign => {
+      
       res.json(dbCampaign);
     }).catch(err => {
+      console.log("No way").
       res.status(500).end();
     });
   });

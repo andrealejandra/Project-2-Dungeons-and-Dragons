@@ -1,7 +1,7 @@
 $(document).ready(() => {
-    const createForm = $("form.createCampaign");
-    const nameInput = $("input#name-input");
-    const briefBioInput = $("textarea#bio-input");
+    const createForm = $("form.newcampaign");
+    const nameInput = $("input#campaign-name");
+    const briefBioInput = $("textarea#summary");
 
     createForm.on("submit", (event) => {
         event.preventDefault();
@@ -14,15 +14,16 @@ $(document).ready(() => {
             return;
         }
 
-        createCampaign(newCampaign.name, newCampaign.briefBio);
+        createCampaign(newCampaign);
+
         nameInput.val("");
         briefBioInput.val("");
     });
 
-    function createCampaign(campaignName, campaingBriefBio) {
+    function createCampaign(newCampaign) {
         $.post("/api/campaigns", {
-            name: campaignName,
-            campaignSummary: campaingBriefBio
+            name: newCampaign.name,
+            campaignSummary: newCampaign.briefBio
         })
             .then(() => {
                 window.location.replace("/campaignView");
