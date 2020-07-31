@@ -116,9 +116,6 @@ $(document).ready(() => {
         }
 
         createCharacter(newCharacter);
-        //there's no point in me making this object 
-        // createCharacter(newCharacter.name, newCharacter.class, newCharacter.race,
-        //     newCharacter.subClass, newCharacter.subRace, campaignId, newCharacter.briefBio);
 
         nameInput.val("");
         classSelection.val("");
