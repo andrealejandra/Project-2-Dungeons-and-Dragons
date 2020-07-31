@@ -193,6 +193,7 @@ module.exports = function (app) {
     if(req.user) {
       userId = req.user.id;
     }
+    
     db.Campaign.create({
       name: req.body.name,
       campaignSummary: req.body.campaignSummary,
