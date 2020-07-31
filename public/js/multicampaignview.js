@@ -6,10 +6,16 @@ $(document).ready(()=>{
         dbCampaigns.map(campaigns =>{
 
         $("#campaigns-div").append(
-            $(`<p> 
-            Title: ${campaigns.name} <br>
-            Summary: ${campaigns.campaignSummary} <br>
-            </p>`)
+            $(`
+            <div class="tiles ">
+                <div type="view-chara" class="tile multiple-desktop ">
+                  <div class="multiple-desktop-text" id= ${campaigns.id}>
+                    <a href="updatecampaign.html">
+                      ${campaigns.name}
+                    </a>
+                  </div>
+                </div>
+            </div>`)
         );
     });
 
