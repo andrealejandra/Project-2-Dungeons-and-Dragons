@@ -1,19 +1,26 @@
+console.log('WHAT IS WRONG!?');
+
+
 $(document).ready(() => {
     $.get("/api/characters").then(dbCharacters => {
-        let characterString = dbCharacters.map(character => {
-            `
-            <p>
-                Name: ${character.name},
-                class: ${character.class},
-                race: ${chracter.race},
-                subclass: ${character.subClass},
-                subrace: ${character.subRace},
-                biography: ${character.briefBio}
-            
-            </p>
-            `
-        }).join("");
-        $("#character-div").html(characterString);
+        console.log(dbCharacters);
+
+        dbCharacters.map(character => {
+            $("#character-div").append(
+                $(`<p> 
+                Name: ${character.name} <br>
+                Class: ${character.class} <br>
+                Race: ${character.race} <br>
+                Subclass: ${character.subClass} <br>
+                Subrace: ${character.subRace} <br>
+                Bio: ${character.briefBio} <br>
+                </p>`)
+            );
+        });
+                
+    }).catch(err => {
+        console.log("didn't get here");
+        console.log(err);
     });
 });
 
