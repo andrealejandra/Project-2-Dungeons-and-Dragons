@@ -26,7 +26,7 @@ $(document).ready(() => {
             campaignSummary: newCampaign.briefBio
         })
             .then(() => {
-                window.location.replace("/campaignView");
+                window.location.replace("/multicampaignview");
             })
             .catch(err => {
                 console.log(err);
