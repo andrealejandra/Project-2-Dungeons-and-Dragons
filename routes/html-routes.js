@@ -27,10 +27,32 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 
+  app.get("/multicharacterview", isAuthenticated, (req,res) => {
+    res.sendFile(path.join(__dirname, "../public/multicharacterview.html"));
+  });
+
+  app.get("/multicampaignview", isAuthenticated, (req,res) => {
+    res.sendFile(path.join(__dirname, "../public/multicampaignview.html"));
+  });
+
+  app.get("/createcharacter", isAuthenticated, (req,res) => {
+    res.sendFile(path.join(__dirname, "../public/createcharacter.html"));
+  });
+
+  app.get("/createcampaign", isAuthenticated, (req,res) => {
+    res.sendFile(path.join(__dirname, "../public/createcampaign.html"));
+  });
+
   app.get("/characterview", isAuthenticated, (req,res) => {
     res.sendFile(path.join(__dirname, "../public/characterview.html"));
   });
 
+  app.get("/campaignView", isAuthenticated, (req,res) => {
+    res.sendFile(path.join(__dirname, "../public/campaignview.html"));
+  });
+  
+
+  
 
   
 };
