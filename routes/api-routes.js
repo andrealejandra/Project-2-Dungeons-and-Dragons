@@ -73,6 +73,7 @@ module.exports = function (app) {
   });
 
   // get all campaigns for a user
+
   app.get('/api/campaigns/', (req, res) => {
     let userId = "";
     if (req.user) {
@@ -90,23 +91,23 @@ module.exports = function (app) {
   });
 
   // get a single character
-  app.get('/api/characters/:characterId', (req, res) => {
-    let userId = "";
-    if (req.user) {
-      userId = req.user.id;
-    }
-    //find a character with a userId and a characterId
-    db.Character.findOne({
-      where: {
-        UserId: userId,
-        id: req.params.characterId
-      }
-    }).then(dbCharacter => {
-      res.json(dbCharacter);
-    }).catch(err => {
-      res.status(500).end();
-    })
-  });
+  // app.get('/api/characters/:characterId', (req, res) => {
+  //   let userId = "";
+  //   if (req.user) {
+  //     userId = req.user.id;
+  //   }
+  //   //find a character with a userId and a characterId
+  //   db.Character.findOne({
+  //     where: {
+  //       UserId: userId,
+  //       id: req.params.characterId
+  //     }
+  //   }).then(dbCharacter => {
+  //     res.json(dbCharacter);
+  //   }).catch(err => {
+  //     res.status(500).end();
+  //   })
+  // });
 
   //find a campaign with a userId and a campaignName
   app.get('/api/campaigns/:campaignName', (req, res) => {
@@ -143,14 +144,9 @@ module.exports = function (app) {
 
   //get all the characters for a specific campaign when given an id
   app.get("/api/characters/:campaignId", (req, res) => {
-    let userId = "";
-    if (req.user) {
-      userId = req.user.id;
-    }
-
+    console.log("You got here");
     db.Character.findAll({
       where: {
-        UserId: userId,
         CampaignId: req.params.campaignId
       }
     }).then(dbCharacters => {
@@ -193,7 +189,7 @@ module.exports = function (app) {
     if(req.user) {
       userId = req.user.id;
     }
-    
+
     db.Campaign.create({
       name: req.body.name,
       campaignSummary: req.body.campaignSummary,
