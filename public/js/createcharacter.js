@@ -136,7 +136,7 @@ $(document).ready(() => {
             briefBio: newCharacter.briefBio,
             campaign: newCharacter.campaign
         }).then(() => {
-            window.location.replace("/characterview");
+            window.location.replace("/multicharacterview");
         }).catch((err) => {
             console.log(err);
         });
