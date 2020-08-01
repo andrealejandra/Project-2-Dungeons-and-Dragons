@@ -52,7 +52,6 @@ module.exports = function (app) {
 
   // get all characters for a user
   app.get('/api/characters/', (req, res) => {
-    console.log("did we even get here?");
     let userId = "";
     if (req.user) {
       userId = req.user.id;
@@ -124,7 +123,7 @@ module.exports = function (app) {
       res.json(dbCampaign)
     }).catch(err => {
       res.status(500).end();
-    })
+    });
   });
 
   //find a campaign id with a userId and a campaignName
@@ -139,12 +138,11 @@ module.exports = function (app) {
       res.json(dbCampaign.id)
     }).catch(err => {
       res.status(500).end();
-    })
-  })
+    });
+  });
 
   //get all the characters for a specific campaign when given an id
   app.get("/api/characters/:campaignId", (req, res) => {
-    console.log("You got here");
     db.Character.findAll({
       where: {
         CampaignId: req.params.campaignId
@@ -153,8 +151,20 @@ module.exports = function (app) {
       res.json(dbCharacters)
     }).catch(err => {
       res.status(500).end();
-    })
-  })
+    });
+  });
+
+  app.get("/api/characters/id/:characterId", (req, res) => {
+    db.Character.findOne({
+      where: {
+        id: req.params.characterId
+      }
+    }).then(dbCharacter => {
+      res.json(dbCharacter);
+    }).catch(err => {
+      res.status(500).end();
+    });
+  });
 
   
 

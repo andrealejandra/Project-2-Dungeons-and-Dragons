@@ -54,7 +54,7 @@ $(document).ready(() => {
             let subclassNames = response.results.map(object => object.name);
 
             for (let i = 0; i < subclassNames.length; i++) {
-                $("#subclass-input").append($(`
+                $("#subclass-input").prepend($(`
                 <option value = ${subclassNames[i]}> ${subclassNames[i]} </option>
                 `));
             };
@@ -69,12 +69,14 @@ $(document).ready(() => {
             method: "GET"
         }).then(response => {
             let subraceNames = response.results.map(object => object.name);
-
             for (let i = 0; i < subraceNames.length; i++) {
                 $("#subrace-input").append($(`
                 <option value = ${subraceNames[i]}> ${subraceNames[i]} </option>
                 `));
             };
+            $("#subrace-input").append($(`
+            <option value = "null">Null</option>
+            `));
         }).catch(err => {
             throw err;
         })
