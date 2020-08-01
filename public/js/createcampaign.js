@@ -24,13 +24,11 @@ $(document).ready(() => {
         $.post("/api/campaigns", {
             name: newCampaign.name,
             campaignSummary: newCampaign.briefBio
-        })
-            .then(() => {
-                window.location.replace("/campaignView");
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        }).then(() => {
+            window.location.replace("/multicampaignview");
+        }).catch(err => {
+            console.log(err);
+        });
     }
 });
 
