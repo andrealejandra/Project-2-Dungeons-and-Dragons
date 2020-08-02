@@ -45,7 +45,7 @@ createForm.on("submit", event => {
     return;
   }
 
-  update(updateCharacter);
+  update(updateCampaign);
 
 
 });
