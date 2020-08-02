@@ -21,7 +21,7 @@ $(document).ready(() => {
   $.get("/api/campaigns").then(dbCampaigns => {
      dbCampaigns.map(campaigns => {
           `
-          <!-- <div class="edit">
+          <div class="edit">
           <form class="newcampaign">
               <div class="form-group">
                   <label for="campaignName">${campaigns.name}</label>
