@@ -13,6 +13,7 @@ $(document).ready(()=>{
                       ${campaigns.name}
                     </a>
                     <br>
+                    Summary: ${campaigns.campaignSummary}
                     </div>
                     <button class="btn btn-warning btn-update" id="${campaigns.id}">Update</button>
                 </div>
