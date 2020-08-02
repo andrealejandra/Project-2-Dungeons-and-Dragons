@@ -10,10 +10,14 @@ $(document).ready(()=>{
           <div class="tiles ">
               <div type="view-chara" class="tile multiple-desktop ">
                 <div class="multiple-desktop-text" id= ${campaigns.id}>
-                  <a href="updatecampaign.html">
-                    ${campaigns.name}
+                    Name: ${campaigns.name}
+                    <br>
+                    Summary: ${campaigns.campaignSummary}
                   </a>
                 </div>
+                </div>
+                <button class="btn btn-warning btn-update" id="${campaigns.id}">Update</button>
+            </div>
               </div>
           </div>`)
       );
@@ -25,4 +29,11 @@ $(document).ready(()=>{
         console.log(err);
     });     
             
+});
+
+$(document).on("click", ".btn-update", event => {
+  event.preventDefault();
+  // console.log(event.target.id);
+  window.location.replace(`/updatecampaign/${event.target.id}`);
+
 });

@@ -206,6 +206,27 @@ module.exports = function (app) {
 
 };
 
+
+
+app.put("/api/campaigns", (req, res, next) => {
+  console.log(req.body);
+  db.Campaign.update(
+    {
+      name: req.body.name,
+      campaignSummary: req.body.briefBio,
+      CampaignId: parseInt(req.body.campaign)
+    },
+    {
+      where:
+      {
+        id: req.body.id
+      }
+    }
+  ).then(rowsUpdated => {
+    res.json(rowsUpdated);
+  }).catch(next);
+});
+
 /*
 GET REQUESTS
   get all characters for a user [x]
