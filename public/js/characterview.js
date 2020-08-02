@@ -14,7 +14,7 @@ $(document).ready(() => {
                 Subclass: ${character.subClass} <br>
                 Subrace: ${character.subRace} <br>
                 Bio: ${character.briefBio} <br>
-                </p>
+                </p`>
 )
             );
         });
