@@ -155,6 +155,7 @@ module.exports = function (app) {
   });
 
   app.get("/api/characters/id/:characterId", (req, res) => {
+    console.log("You got here");
     db.Character.findOne({
       where: {
         id: req.params.characterId

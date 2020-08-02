@@ -23,7 +23,8 @@
 }
 
 nav {
-color: black;
+color: white;
+background: black;
 opacity: .8;
 }
 a {
