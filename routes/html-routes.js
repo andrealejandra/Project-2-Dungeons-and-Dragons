@@ -55,6 +55,10 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/multicharacterview.html"));
   });
 
+  app.get("/updatecampaign", isAuthenticated, (req,res) =>{
+    res.sendFile(path.join(__dirname, "../public/updatecampaign.html"));
+  });
+
   
 
   
