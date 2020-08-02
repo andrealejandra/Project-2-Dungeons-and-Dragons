@@ -1,6 +1,7 @@
 $(document).ready(() => {
     let address = (window.location.href).split("/");
     let id = address[address.length - 1];
+    
     let campaigns = [];
     const createForm = $("form.updatecharacter");
     const nameInput = $("input#character-name");

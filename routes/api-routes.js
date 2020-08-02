@@ -213,7 +213,6 @@ module.exports = function (app) {
   });
 
   app.put("/api/characters", (req, res, next) => {
-    console.log(req.body);
     db.Character.update(
       {
         name: req.body.name,
@@ -235,9 +234,16 @@ module.exports = function (app) {
     }).catch(next);
   });
 
-
-
-
+  app.delete("/api/characters/id/:id", (req, res) => {
+    const id = req.params.id;
+    db.Character.destroy({
+      where: {id:id}
+    }).then(deletedCharacter => {
+      res.json(deletedCharacter);
+    }).catch(err => {
+      res.status(500).end();
+    });
+  });
 };
 
 /*

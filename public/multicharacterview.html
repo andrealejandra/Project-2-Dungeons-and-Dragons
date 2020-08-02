@@ -5,25 +5,24 @@
 
 
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Enter your description here" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Almendra:wght@700&family=Metamorphous&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./stylesheets/style.css">
-    <link href="./stylesheets/multiple.css" rel="stylesheet">
-    
-    <title>View Characters</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Description" content="Enter your description here" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Almendra:wght@700&family=Metamorphous&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./stylesheets/style.css">
+  <link href="./stylesheets/multiple.css" rel="stylesheet">
+
+  <title>View Characters</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-default">
+  <nav class="navbar">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="members.html">
-          Back to Menu
-        </a>
+        <div id="backToMenu">Back to Menu</div>
       </div>
     </div>
   </nav>
@@ -31,6 +30,13 @@
   <div id="character-div">
   </div>
 
+  <div id="deleteModal">
+    <div class="modal-content">
+      <span class="closeBtn">&times;</span>
+      <p style="display: inline;">Are you sure you want to delete this character?</p>
+      <button class="btn deleteConfirm" id="deleteConfirm">Yes, delete this character</button>
+    </div>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
