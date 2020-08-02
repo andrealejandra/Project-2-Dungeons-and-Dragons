@@ -213,7 +213,7 @@ app.put("/api/campaigns", (req, res, next) => {
   db.Campaign.update(
     {
       name: req.body.name,
-      campaignSummary: req.body.briefBio,
+      campaignSummary: req.body.campaignSummary,
       CampaignId: parseInt(req.body.campaign)
     },
     {
