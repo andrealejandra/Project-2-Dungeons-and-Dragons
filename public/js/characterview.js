@@ -14,10 +14,11 @@ $(document).ready(() => {
                 Subclass: ${character.subClass} <br>
                 Subrace: ${character.subRace} <br>
                 Bio: ${character.briefBio} <br>
-                </p>`)
+                </p>
+)
             );
         });
-                
+
     }).catch(err => {
         console.log("didn't get here");
         console.log(err);

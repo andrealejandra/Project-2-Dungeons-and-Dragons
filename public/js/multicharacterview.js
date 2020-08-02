@@ -17,6 +17,9 @@ $(document).ready(() => {
                                     Subclass: ${character.subClass} <br>                                        Subrace: ${character.subRace} <br>
                                     Bio: ${character.briefBio} <br>   
                                 </div>
+                                </div>
+                                <button class="btn btn-warning btn-update" id="${character.id}">Update</button>
+                            </div>
                             </div>
                         </div>`)
                     );
