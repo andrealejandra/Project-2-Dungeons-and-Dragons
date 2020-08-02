@@ -52,7 +52,6 @@ module.exports = function (app) {
 
   // get all characters for a user
   app.get('/api/characters/', (req, res) => {
-    console.log("did we even get here?");
     let userId = "";
     if (req.user) {
       userId = req.user.id;
@@ -124,7 +123,7 @@ module.exports = function (app) {
       res.json(dbCampaign)
     }).catch(err => {
       res.status(500).end();
-    })
+    });
   });
 
   //find a campaign id with a userId and a campaignName
@@ -139,12 +138,11 @@ module.exports = function (app) {
       res.json(dbCampaign.id)
     }).catch(err => {
       res.status(500).end();
-    })
-  })
+    });
+  });
 
   //get all the characters for a specific campaign when given an id
   app.get("/api/characters/:campaignId", (req, res) => {
-    console.log("You got here");
     db.Character.findAll({
       where: {
         CampaignId: req.params.campaignId
@@ -153,10 +151,23 @@ module.exports = function (app) {
       res.json(dbCharacters)
     }).catch(err => {
       res.status(500).end();
-    })
-  })
+    });
+  });
 
-  
+  app.get("/api/characters/id/:characterId", (req, res) => {
+    console.log("You got here");
+    db.Character.findOne({
+      where: {
+        id: req.params.characterId
+      }
+    }).then(dbCharacter => {
+      res.json(dbCharacter);
+    }).catch(err => {
+      res.status(500).end();
+    });
+  });
+
+
 
 
   /* ********* I added work here
@@ -175,7 +186,7 @@ module.exports = function (app) {
       subRace: req.body.subRace,
       briefBio: req.body.briefBio,
       CampaignId: parseInt(req.body.campaign)
-  
+
     }).then(dbCharacter => {
       res.json(dbCharacter.dataValues.id);
     }).catch(err => {
@@ -186,7 +197,7 @@ module.exports = function (app) {
 
   app.post('/api/campaigns', (req, res) => {
     let userId = "";
-    if(req.user) {
+    if (req.user) {
       userId = req.user.id;
     }
 
@@ -201,9 +212,38 @@ module.exports = function (app) {
     });
   });
 
+  app.put("/api/characters", (req, res, next) => {
+    db.Character.update(
+      {
+        name: req.body.name,
+        class: req.body.class,
+        race: req.body.race,
+        subClass: req.body.subClass,
+        subRace: req.body.subRace,
+        briefBio: req.body.briefBio,
+        CampaignId: parseInt(req.body.campaign)
+      },
+      {
+        where:
+        {
+          id: req.body.id
+        }
+      }
+    ).then(rowsUpdated => {
+      res.json(rowsUpdated);
+    }).catch(next);
+  });
 
-
-
+  app.delete("/api/characters/id/:id", (req, res) => {
+    const id = req.params.id;
+    db.Character.destroy({
+      where: {id:id}
+    }).then(deletedCharacter => {
+      res.json(deletedCharacter);
+    }).catch(err => {
+      res.status(500).end();
+    });
+  });
 };
 
 /*

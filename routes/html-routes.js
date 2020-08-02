@@ -55,6 +55,10 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/multicharacterview.html"));
   });
 
+  app.get("/characterview/:characterId" , isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/updatecharacter.html"));
+  })
+
   
 
   

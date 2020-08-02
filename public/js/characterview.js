@@ -1,6 +1,3 @@
-console.log('WHAT IS WRONG!?');
-
-
 $(document).ready(() => {
     $.get("/api/characters").then(dbCharacters => {
         console.log(dbCharacters);

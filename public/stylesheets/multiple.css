@@ -23,7 +23,8 @@
 }
 
 nav {
-color: black;
+color: white;
+background: black;
 opacity: .8;
 }
 a {
@@ -41,6 +42,47 @@ color: black
 button {
 background-color: black;
 color: maroon
+}
+
+.btn-delete{
+    margin-left:10px;
+}
+
+#deleteModal{
+    display:none;
+    position:fixed;
+    z-index:1;
+    left:0;
+    top:0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0, 0.666);
+}
+.modal-content{
+    background-color: black;
+    color: white;
+    margin: 20% auto;
+    padding: 20px;
+    width: 70%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
+}
+
+.closeBtn{
+    color:#ccc;
+    float:right;
+    font-size:30px;
+}
+.closeBtn:hover,.closeBtn:focus{
+    color:maroon;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.deleteConfirm{
+    float:right;
+    padding-right:30px;
+    color:white;
 }
 
 div {
@@ -73,6 +115,7 @@ margin: 8px;
     background-attachment: fixed;
     background-repeat: no-repeat;
     text-shadow: 1em;
+    width:500px;
   
 }
 
