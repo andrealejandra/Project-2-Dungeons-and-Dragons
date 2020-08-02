@@ -167,7 +167,7 @@ module.exports = function (app) {
     });
   });
 
-  
+
 
 
   /* ********* I added work here
@@ -186,7 +186,7 @@ module.exports = function (app) {
       subRace: req.body.subRace,
       briefBio: req.body.briefBio,
       CampaignId: parseInt(req.body.campaign)
-  
+
     }).then(dbCharacter => {
       res.json(dbCharacter.dataValues.id);
     }).catch(err => {
@@ -197,7 +197,7 @@ module.exports = function (app) {
 
   app.post('/api/campaigns', (req, res) => {
     let userId = "";
-    if(req.user) {
+    if (req.user) {
       userId = req.user.id;
     }
 
@@ -210,6 +210,29 @@ module.exports = function (app) {
     }).catch(err => {
       res.status(500).end();
     });
+  });
+
+  app.put("/api/characters", (req, res, next) => {
+    console.log(req.body);
+    db.Character.update(
+      {
+        name: req.body.name,
+        class: req.body.class,
+        race: req.body.race,
+        subClass: req.body.subClass,
+        subRace: req.body.subRace,
+        briefBio: req.body.briefBio,
+        CampaignId: parseInt(req.body.campaign)
+      },
+      {
+        where:
+        {
+          id: req.body.id
+        }
+      }
+    ).then(rowsUpdated => {
+      res.json(rowsUpdated);
+    }).catch(next);
   });
 
 

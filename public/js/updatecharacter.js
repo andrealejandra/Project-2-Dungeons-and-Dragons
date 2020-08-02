@@ -2,6 +2,34 @@ $(document).ready(() => {
     let address = (window.location.href).split("/");
     let id = address[address.length - 1];
     let campaigns = [];
+    const createForm = $("form.updatecharacter");
+    const nameInput = $("input#character-name");
+    const classSelection = $("select#class-input");
+    const raceSelection = $("select#race-input");
+    const subClassSelection = $("select#subclass-input");
+    const subRaceSelection = $("select#subrace-input");
+    const campaignSelection = $("select#campaign-input");
+    const briefBioInput = $("textarea#bio-input");
+
+    function update(updateCharacter) {
+        $.ajax({
+            url: "/api/characters",
+            type: "PUT",
+            data: {
+                name: updateCharacter.name,
+                class: updateCharacter.class,
+                race: updateCharacter.race,
+                subClass: updateCharacter.subClass,
+                subRace: updateCharacter.subRace,
+                briefBio: updateCharacter.briefBio,
+                campaign: updateCharacter.campaign,
+                id: updateCharacter.id
+            },
+            success: (data) => {
+                window.location.replace("/multicharacterview");
+            }
+        });
+    };
 
     const getClasses = () => {
         $.ajax({
@@ -120,7 +148,7 @@ $(document).ready(() => {
         `));
 
         $("#campaign-input").prepend($(`
-        <option value = ${campaigns[campaignIndex].name}> ${campaigns[campaignIndex].name} </option>
+        <option value = ${campaigns[campaignIndex].id}> ${campaigns[campaignIndex].name} </option>
         `));
         campaigns.forEach(campaign => {
             $("#campaign-input").append($(
@@ -131,5 +159,33 @@ $(document).ready(() => {
         $("#bio-input").val(character.briefBio);
     });
 
+    
+    createForm.on("submit", event => {
+        event.preventDefault();
+
+        const updateCharacter = {
+            name: nameInput.val().trim(),
+            class: classSelection.val().trim(),
+            race: raceSelection.val().trim(),
+            subClass: subClassSelection.val().trim(),
+            subRace: subRaceSelection.val().trim(),
+            campaign: campaignSelection.val(),
+            briefBio: briefBioInput.val().trim(),
+            id: id
+        };
+
+        console.log(updateCharacter);
+
+        if (!updateCharacter.name || !updateCharacter.class || !updateCharacter.race) {
+            //find a way to handle this so the user knows "can't have a blank name... or blank class..."
+            return;
+        }
+
+        update(updateCharacter);
+
+
+    });
+
+    
 
 })
