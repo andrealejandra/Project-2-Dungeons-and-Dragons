@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 
   $.get("/api/user_data").then(function(data) {
-    $(".member-name").text(data.nickName);
+    $(".member-name").text(data.nickName +"'s Dungeon");
   });
 
   viewCharacter.on("click", (event) => {
