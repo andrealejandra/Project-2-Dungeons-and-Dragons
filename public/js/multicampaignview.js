@@ -10,9 +10,12 @@ $(document).ready(()=>{
             <div class="tiles ">
                 <div type="view-chara" class="tile multiple-desktop ">
                   <div class="multiple-desktop-text" id= ${campaigns.id}>
-                    <a href="updatecampaign.html">
                       ${campaigns.name}
                     </a>
+                    <br>
+                    </div>
+                    <button class="btn btn-warning btn-update" id="${campaigns.id}">Update</button>
+                </div>
                   </div>
                 </div>
             </div>`)
