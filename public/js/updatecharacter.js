@@ -6,6 +6,7 @@ $(document).ready(() => {
 
     let campaigns = [];
     const createForm = $("form.updatecharacter");
+    const updateTitle = $("#char");
     const nameInput = $("input#character-name");
     const classSelection = $("select#class-input");
     const raceSelection = $("select#race-input");
@@ -130,6 +131,8 @@ $(document).ready(() => {
                 campaignIndex = i;
             }
         }
+
+        updateTitle.html(character.name);
 
         console.log(campaignIndex);
 
