@@ -16,17 +16,21 @@
     justify-content: center;
 
 }
+
+label {
+    color: whitesmoke;
+}
 .form-control {
     background: black;
     opacity: .8;
     border: none;
 }
 
-nav {
+/* nav {
 color: white;
 background: black;
 opacity: .8;
-}
+} */
 a {
 color: whitesmoke
 }

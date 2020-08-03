@@ -9,7 +9,9 @@ body {
 };
   
   /* background-color: #cccccc; */
-
+label {
+  font-size:20px;
+};
 
  
 form.signup,
