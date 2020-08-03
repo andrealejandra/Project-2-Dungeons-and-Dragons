@@ -16,17 +16,17 @@
   <link rel="stylesheet" href="./stylesheets/style.css">
   <link href="./stylesheets/multiple.css" rel="stylesheet">
 
-  <title>New Campaign</title>
+  <title>View Campaigns</title>
 </head>
 
 <body>
   <nav class="navbar">
     <div class="container-fluid">
       <div class="navbar-header">
-        <!-- <a class="navbar-brand" href="members.html">
-          Back to Menu
-        </a> -->
-        <button class="btn navbar-btn" id="backToMenu">Back to Menu</button>
+
+        <div class="navbar-header navbar-dark" id="back-to-menu">
+          <button class="btn navbar-btn" id="backToMenu">Back to Menu</button>
+      </div>
 
       </div>
     </div>
@@ -34,22 +34,16 @@
 
 
   <div id="campaigns-div">
-
   </div>
 
+  <div id="deleteModal">
+    <div class="modal-content">
+      <span class="closeBtn">&times;</span>
+      <p style="display: inline;">Are you sure you want to delete this campaign?</p>
+      <button class="btn deleteConfirm" id="deleteConfirm">Yes, delete this campaign</button>
+    </div>
+  </div>
 
-
-<!-- 
-  <div class="container">
-    <div class="tiles ">
-      <div class="col-md-6 col-md-offset-1">
-        <div type="view-chara" class="tile multiple-desktop ">
-          <div class="multiple-desktop-text">
-            <a href="updatecampaign.html">
-              Campaign 1
-            </a>
-          </div>
-        </div> -->
 
 
 
