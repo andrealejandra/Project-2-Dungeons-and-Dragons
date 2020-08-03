@@ -33,6 +33,10 @@ $(document).ready(function() {
     window.location.replace("/createcampaign");
   });
 
+  $("#logout").on("click",event => {
+    event.preventDefault();
+    window.location.replace("/logout");
+});
 
 });
 
