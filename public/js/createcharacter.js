@@ -1,3 +1,5 @@
+const backToMenu = $("#backToMenu");
+
 $(document).ready(() => {
     const createForm = $("form.newcharacter");
     const nameInput = $("input#character-name");
@@ -94,7 +96,6 @@ $(document).ready(() => {
     getSubRaces();
     getCampaigns();
 
-
     createForm.on("submit", (event) => {
         event.preventDefault();
 
@@ -139,10 +140,11 @@ $(document).ready(() => {
             console.log(err);
         });
     };
+});
 
-
-
-
+$(backToMenu).on("click",event => {
+    event.preventDefault();
+    window.location.replace('/members');
 });
 
 

@@ -1,5 +1,5 @@
 let modal = $("#deleteModal");
-let backToMenu = $("#backToMenu");
+const backToMenu = $("#backToMenu");
 
 $(document).ready(() => {
 
