@@ -1,7 +1,9 @@
+let backToMenu = $("#backToMenu");
+
 $(document).ready(() => {
     let address = (window.location.href).split("/");
     let id = address[address.length - 1];
-    
+
     let campaigns = [];
     const createForm = $("form.updatecharacter");
     const nameInput = $("input#character-name");
@@ -109,7 +111,7 @@ $(document).ready(() => {
             dbCampaigns.map(campaign => {
                 campaigns.push({ id: campaign.id, name: campaign.name });
             });
-            
+
         });
     }
     getClasses();
@@ -128,6 +130,7 @@ $(document).ready(() => {
                 campaignIndex = i;
             }
         }
+
         console.log(campaignIndex);
 
         $("#character-name").val(character.name);
@@ -156,11 +159,9 @@ $(document).ready(() => {
                 `<option value = ${campaign.id}> ${campaign.name} </option>`
             ));
         })
-
         $("#bio-input").val(character.briefBio);
     });
 
-    
     createForm.on("submit", event => {
         event.preventDefault();
 
@@ -175,18 +176,16 @@ $(document).ready(() => {
             id: id
         };
 
-        console.log(updateCharacter);
-
         if (!updateCharacter.name || !updateCharacter.class || !updateCharacter.race) {
             //find a way to handle this so the user knows "can't have a blank name... or blank class..."
             return;
         }
 
         update(updateCharacter);
-
-
     });
-
-    
-
 })
+
+$(backToMenu).on("click", event => {
+    event.preventDefault();
+    window.location.replace('/members');
+});

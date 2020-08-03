@@ -36,7 +36,7 @@ color: whitesmoke
 }
 
 a:hover {
-color: black
+color: maroon;
 }
 
 .title{
@@ -46,6 +46,15 @@ color: black
 button {
 background-color: black;
 color: maroon
+}
+.navbar-btn{
+background-color: black;
+color: whitesmoke;
+font-size: 14px;
+}
+
+.navbar-btn:hover {
+    color: orangered;
 }
 
 .btn-delete{

@@ -1,3 +1,5 @@
+const backToMenu = $("#backToMenu");
+
 $(document).ready(() => {
     const createForm = $("form.newcampaign");
     const nameInput = $("input#campaign-name");
@@ -30,5 +32,10 @@ $(document).ready(() => {
             console.log(err);
         });
     }
+});
+
+$(backToMenu).on("click",event => {
+    event.preventDefault();
+    window.location.replace('/members');
 });
 
