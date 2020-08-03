@@ -16,7 +16,7 @@ $(document).ready(() => {
             <div class="tiles ">
                 <div type="view-chara" class="tile multiple-desktop ">
                   <div class="multiple-desktop-text" id= ${campaigns.id}>
-                      ${campaigns.name}
+                      <h4 class="glow">${campaigns.name}</h4>
                     </a>
                     <br>
                     Summary: ${campaigns.campaignSummary}

@@ -5,6 +5,7 @@ $(document).ready(() => {
     let id = address[address.length - 1];
 
     const updateForm = $("form.updatecampaign");
+    const updateTitle = $("#camp");
     const campaignName = $("#campaign-name");
     const summary = $("#summary");
 
@@ -26,6 +27,7 @@ $(document).ready(() => {
 
     $.get(`/api/campaigns/id/${id}`).then(campaign => {
       campaignName.val(campaign.name);
+      updateTitle.html(campaign.name);
       summary.val(campaign.campaignSummary);
     });
 

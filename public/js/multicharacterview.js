@@ -16,7 +16,7 @@ $(document).ready(() => {
                             `<div class="tiles col-md-4">
                             <div type="view-chara" class="tile multiple-desktop ">
                                 <div class="multiple-desktop-text" id=${character.id}>
-                                    Name: ${character.name} <br>
+                                   <h4 class="glow">${character.name} </h6>
                                     Class: ${character.class} <br>
                                     Race: ${character.race} <br>
                                     Subclass: ${character.subClass} <br>                                        
