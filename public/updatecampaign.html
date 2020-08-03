@@ -33,22 +33,26 @@
     </div>
     <br>
     <div class="edit">
-        <form class="newcampaign">
+        <form class="updatecampaign">
             <div class="form-group">
-                <label for="campaignName">Campaign Name</label>
-                <input type="name" class="form-control" id="campaign-name" placeholder="Update Campaign">
+                <label for="characterName">Campaign Name</label>
+                <input type="name" class="form-control" id="campaign-name" >
             </div>
+
             <div class="form-group">
-                <label for="campaignSummary">Summary</label>
-                <textarea class="form-control" id="summary" cols="30" rows="10"
-                    placeholder="In ANOTHER dimly lit brothel..."></textarea>
+                <label for="summary">Campaign Summary</label>
+                <textarea type="textarea" class="form-control" id="summary-input" 
+                    cols="30" rows="10"></textarea>
             </div>
-            <button type="submit" class="btn">Save</button>
+            <button type="submit" class="btn btn-dark">Update Campaign</button>
         </form>
  
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<script src="../node_modules/multiple.js/multiple.js"></script>
+<!-- <script src="../node_modules/multiple.js/multiple.js"></script> -->
+<script type="text/javascript" src="/js/updatecampaign.js"></script>
 
 </body>
 </html>

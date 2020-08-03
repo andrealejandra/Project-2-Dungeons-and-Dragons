@@ -36,6 +36,12 @@ $(document).ready(() => {
 
 });
 
+$(document).on("click", ".btn-update", event => {
+  event.preventDefault();
+  // console.log(event.target.id);
+  window.location.replace(`/updatecampaign/${event.target.id}`);
+});
+
 
 $(document).on("click", ".btn-delete", event => {
   event.preventDefault();
