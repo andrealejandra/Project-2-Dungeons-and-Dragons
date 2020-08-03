@@ -167,6 +167,18 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/campaigns/id/:campaignId", (req, res) => {
+    db.Campaign.findOne({
+      where: {
+        id: req.params.campaignId
+      }
+    }).then(dbCampaign => {
+      res.json(dbCampaign);
+    }).catch(err => {
+      res.status(500).end();
+    });
+  });
+
 
 
 
@@ -226,6 +238,22 @@ module.exports = function (app) {
       {
         where:
         {
+          id: req.body.id
+        }
+      }
+    ).then(rowsUpdated => {
+      res.json(rowsUpdated);
+    }).catch(next);
+  });
+
+  app.put("/api/campaigns", (req, res, next) => {
+    db.Campaign.update(
+      {
+        name:req.body.name,
+        campaignSummary: req.body.campaignSummary
+      },
+      {
+        where: {
           id: req.body.id
         }
       }

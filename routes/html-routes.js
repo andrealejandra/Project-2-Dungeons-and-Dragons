@@ -59,6 +59,10 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/updatecharacter.html"));
   })
 
+  app.get("/campaignview/:campaignId" , isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/updatecampaign.html"));
+  })
+
   
 
   

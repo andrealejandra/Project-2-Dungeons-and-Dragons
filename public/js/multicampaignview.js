@@ -1,12 +1,14 @@
-$(document).ready(()=>{
-    $.get("/api/campaigns").then(dbCampaigns =>{
-        console.log(dbCampaigns);
+const backToMenu = $("#backToMenu");
+
+$(document).ready(() => {
+  $.get("/api/campaigns").then(dbCampaigns => {
+    console.log(dbCampaigns);
 
 
-        dbCampaigns.map(campaigns =>{
+    dbCampaigns.map(campaigns => {
 
-        $("#campaigns-div").append(
-            $(`
+      $("#campaigns-div").append(
+        $(`
             <div class="tiles ">
                 <div type="view-chara" class="tile multiple-desktop ">
                   <div class="multiple-desktop-text" id= ${campaigns.id}>
@@ -20,14 +22,24 @@ $(document).ready(()=>{
                   </div>
                 </div>
             </div>`)
-        );
+      );
     });
 
 
-       }).catch(err =>{
-         console.log("Why are you here, buddy?");
-          console.log(err);
-      });     
-              
- });
+  }).catch(err => {
+
+    console.log(err);
+  });
+
+});
+
+$(document).on("click", ".btn-update", event => {
+  event.preventDefault();
+  window.location.replace(`/campaignview/${event.target.id}`);
+})
+
+$(backToMenu).on("click",event => {
+  event.preventDefault();
+  window.location.replace('/members');
+});
 
