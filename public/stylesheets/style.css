@@ -1,5 +1,5 @@
 body {
-  background-image: url("image3.png");
+  background-image: url("dndfire.gif");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -19,4 +19,20 @@ form.login {
 
 .container{
   padding: 1em
+}
+
+.glow {
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px orange, 0 0 40px orange, 0 0 50px orange, 0 0 60px orange, 0 0 70px orange;
+  }
+  
+  to {
+    text-shadow: 0 0 20px white, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 60px red, 0 0 70px red, 0 0 80px red;
+  }
 }
