@@ -272,7 +272,25 @@ module.exports = function (app) {
       res.status(500).end();
     });
   });
+
+  app.delete("/api/campaigns/id/:id", (req, res) => {
+    const id = req.params.id;
+    db.Campaign.destroy({
+      where: { id: id }
+    }).then(deletedCampaign => {
+      res.json(deletedCampaign);
+    }).catch(err => {
+      res.status(500).end();
+    });
+  });
+
+
+
+
+
 };
+
+
 
 /*
 GET REQUESTS
