@@ -77,6 +77,11 @@ function outsideClick(event) {
   }
 }
 
+$(window).on("click", event => {
+  event.preventDefault();
+  outsideClick(event);
+})
+
 function deleteCampaign(id) {
   $.ajax({
       method: "DELETE",
