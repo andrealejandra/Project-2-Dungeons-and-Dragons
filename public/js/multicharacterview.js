@@ -12,7 +12,7 @@ $(document).ready(() => {
                 dbCharacters.map(character => {
                     $("#character-div").append(
                         $(
-                            `<div class="tiles">
+                            `<div class="tiles col-md-4">
                             <div type="view-chara" class="tile multiple-desktop ">
                                 <div class="multiple-desktop-text" id=${character.id}>
                                     Name: ${character.name} <br>
@@ -21,10 +21,12 @@ $(document).ready(() => {
                                     Subclass: ${character.subClass} <br>                                        
                                     Subrace: ${character.subRace} <br>
                                     Bio: ${character.briefBio} <br>   
-                                </div>
+                             
                                 <button class="btn btn-warning btn-update" id="${character.id}">Update Character</button>
+                             
                                 <button type="button" class="btn btn-danger btn-delete" 
                                 id="${character.id}" data-toggle="modal" data-target="exampleModal">Delete Character</button>
+                           </div>
                             </div>
                         </div>`)
                     );
