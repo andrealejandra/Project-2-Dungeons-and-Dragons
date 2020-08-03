@@ -1,5 +1,6 @@
 let modal = $("#deleteModal");
 const backToMenu = $("#backToMenu");
+const createNewCharacter = $("#createCharacter");
 
 $(document).ready(() => {
 
@@ -42,6 +43,11 @@ $(backToMenu).on("click",event => {
     event.preventDefault();
     window.location.replace('/members');
 });
+
+createNewCharacter.on("click", event => {
+    event.preventDefault();
+    window.location.replace('/createcharacter');
+})
 
 $(document).on("click", ".btn-update", event => {
     event.preventDefault();

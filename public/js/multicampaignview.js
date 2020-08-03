@@ -1,5 +1,6 @@
 let modal = $("#deleteModal");
 const backToMenu = $("#backToMenu");
+const createNewCampaign = $("#createNewCampaign");
 
 $(document).ready(() => {
 
@@ -57,6 +58,11 @@ $(backToMenu).on("click",event => {
   event.preventDefault();
   window.location.replace('/members');
 });
+
+createNewCampaign.on("click", event => {
+  event.preventDefault();
+  window.location.replace("/createcampaign");
+})
 
 function openModal(id) {
   modal.css("display", "block");
