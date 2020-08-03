@@ -8,6 +8,9 @@
     border: 1px;
     opacity: .7;
     border-radius: 8px;
+    /* padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px; */
   }
 .tiles {
     clip: rect(0, auto, auto, 0);
@@ -26,11 +29,7 @@ label {
     border: none;
 }
 
-/* nav {
-color: white;
-background: black;
-opacity: .8;
-} */
+
 a {
 color: whitesmoke
 }
@@ -113,6 +112,7 @@ margin: 8px;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
+    
  
 }
 
@@ -129,6 +129,8 @@ margin: 8px;
     background-repeat: no-repeat;
     text-shadow: 1em;
     width:500px;
+    margin-top: 15px;
+    margin-bottom: 15px;
   
 }
 
