@@ -1,4 +1,5 @@
 let modal = $("#deleteModal");
+let backToMenu = $("#backToMenu");
 
 $(document).ready(() => {
 
@@ -35,7 +36,7 @@ $(document).ready(() => {
     });
 });
 
-$(document).on("click", "#backToMenu", event => {
+$(backToMenu).on("click",event => {
     event.preventDefault();
     window.location.replace('/members');
 });
