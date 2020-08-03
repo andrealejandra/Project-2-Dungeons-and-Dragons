@@ -1,4 +1,4 @@
-let backToMenu = $("#backToMenu");
+const viewAllCharacters = $("#viewAllCharacters");
 
 $(document).ready(() => {
     let address = (window.location.href).split("/");
@@ -185,7 +185,7 @@ $(document).ready(() => {
     });
 })
 
-$(backToMenu).on("click", event => {
+$(viewAllCharacters).on("click", event => {
     event.preventDefault();
-    window.location.replace('/members');
+    window.location.replace('/multicharacterview');
 });
