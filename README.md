@@ -18,7 +18,7 @@ When a user creates a new campaign, they need to enter a title and they can add 
 
 When a user creates a new character, they are given certain traits to decide, such as class, race, subclass, and subrace. These options are populated by the Dungeons and Dragons 5th edition API. The user also selects a campaign to add the character into, either their Character Sandbox or a new campaign they have created. 
 
-![Creating a character](images/createcharacter.JPG)
+![Creating a character](images/addacharacter.JPG)
 
 ## View Campaigns
 
