@@ -3,7 +3,7 @@ Dungeons and Dragons is a massively popular fantasy role playing game, where a d
 
 This app is designed to allow users to manage non playable characters, and keep track of the worlds they've built. Users can sign up, log in, and create campaigns and characters. 
 
-![The Member's page](images/memeberspage.JPG) 
+![The Member's page](images/memberspage.JPG) 
 
 ## Signing Up
 When new users sign up, they are automatically assigned a new campaign called 'Character Sandbox.' If they chose to create a new character outside of a campaign, they can save their characters to this default campaign. 
