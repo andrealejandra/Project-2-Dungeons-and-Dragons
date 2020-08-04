@@ -12,17 +12,25 @@ When new users sign up, they are automatically assigned a new campaign called 'C
 
 When a user creates a new campaign, they need to enter a title and they can add a short description to keep track of any important details about the game. They can always come back and edit the information as the game unravels. 
 
+![Creating a Campaign](images/createcampaign.JPG)
+
 ## Creating a Character
 
 When a user creates a new character, they are given certain traits to decide, such as class, race, subclass, and subrace. These options are populated by the Dungeons and Dragons 5th edition API. The user also selects a campaign to add the character into, either their Character Sandbox or a new campaign they have created. 
+
+![Creating a character](images/createcharacter.JPG)
 
 ## View Campaigns
 
 When a user wants to View Campaigns, they click the link and there they can see all their campaigns, update a certain campaign, or even delete an old campaign. 
 
+![View Campaigns](images/viewcampaigns.JPG)
+
 ## View Characters
 
 Just like View Campaigns, View Characters is where the user can see all their npcs, and decide to update or delete any character. 
+
+![View Characters](images/viewcharacters.JPG)
 
 ### Future Developements
 
